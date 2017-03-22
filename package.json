@@ -1,0 +1,32 @@
+{
+  "name": "react-style-scrollbar",
+  "version": "1.0.0",
+  "description": "customized style scrollbar component for react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/djwxfdt/react-style-scrollbar.git"
+  },
+  "keywords": [
+    "react",
+    "scrollbar",
+    "style",
+    "customized"
+  ],
+  "author": "djwxfdt.github",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djwxfdt/react-style-scrollbar/issues"
+  },
+  "homepage": "https://github.com/djwxfdt/react-style-scrollbar#readme",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "webpack": "^2.3.0"
+  }
+}
