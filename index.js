@@ -14,12 +14,12 @@ class Scrollbar extends React.Component{
 
     static propTypes = {
         padding:React.PropTypes.object,
-        slot:React.propTypes.bool,
-        slotAutoHidden:React.propTypes.bool,
-        vertical:React.propTypes.bool,
-        horizontal:React.propTypes.bool,
-        opacity:React.propTypes.number,
-        barColor:React.propTypes.string
+        slot:React.PropTypes.bool,
+        slotAutoHidden:React.PropTypes.bool,
+        vertical:React.PropTypes.bool,
+        horizontal:React.PropTypes.bool,
+        opacity:React.PropTypes.number,
+        barColor:React.PropTypes.string
     }
 
     static defaultProps = {
@@ -32,9 +32,9 @@ class Scrollbar extends React.Component{
         barColor:'#777'
     }
 
-    generateBarStyle(verticle){
+    generateBarStyle(vertical){
         let slotStyle = {
-            "z-index": 1,
+            "zIndex": 1,
             display: "none",
             position: "absolute",
             background: "#fff",
@@ -46,12 +46,12 @@ class Scrollbar extends React.Component{
             position: "absolute",
             opacity: this.props.opacity,
             display: "none",
-            "border-radius": "7px",
-            "z-index": 2,
+            "borderRadius": "7px",
+            "zIndex": 2,
             background:this.props.barColor
         }
 
-        if(verticle){
+        if(vertical){
             barStyle.top = this.state.top + "px"
             slotStyle.right = barStyle.right = "2px"
             slotStyle.width = barStyle.width = "7px"
@@ -69,12 +69,19 @@ class Scrollbar extends React.Component{
         const {left,top,right,bottom} = this.props.padding
         return(
             <div ref={ref=>this.ref = ref}
-                style={{padding:`${top || 0}px ${right || 0}px ${bottom || 0}px ${left || 0}px`,postion:"relative"}}
+                style={{
+                    padding:`${top || 0}px ${right || 0}px ${bottom || 0}px ${left || 0}px`,
+                    postion:"relative",
+                    height:"100%",
+                    "width":"100%",
+                    "overflow":"hidden"
+
+                }}
                 onScroll={e=>this.onScroll(e)}
                 >
                 {this.props.children}
                 {(()=>{
-                    if(this.props.verticle){
+                    if(this.props.vertical){
                         let [slotStyle,barStyle] = this.generateBarStyle(true)
                         return <div className="rightScroll">
                             <div className="scrollBar" style={barStyle}></div>
@@ -94,7 +101,8 @@ class Scrollbar extends React.Component{
     }
 
     onScroll(e){
-        if(this.props.verticle){
+        console.error(e);
+        if(this.props.vertical){
             let top = e.currentTarget.scrollTop
             if(top != this.state.top){
                 this.setState({top})
