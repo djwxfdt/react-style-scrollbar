@@ -5,7 +5,7 @@ const Scrollbar = require('../index.js')
 
 class App extends React.Component{
     render(){
-        return <div style={{overflow:"hidden",height:"100px"}}>
+        return <div style={{overflow:"hidden",height:"100px",width:"100px"}}>
             <Scrollbar>
                 <div>
                     <div>1,Scrollbar</div>
@@ -24,7 +24,5 @@ class App extends React.Component{
         </div>
     }
 }
-
-console.error(1);
 
 ReactDOM.render(<App/>,document.getElementById('app'))

@@ -77,7 +77,7 @@ class Scrollbar extends React.Component{
                     "overflow":"hidden"
 
                 }}
-                onScroll={e=>this.onScroll(e)}
+                onWheel={e=>this.onScroll(e)}
                 >
                 {this.props.children}
                 {(()=>{
@@ -101,12 +101,11 @@ class Scrollbar extends React.Component{
     }
 
     onScroll(e){
-        console.error(e);
-        if(this.props.vertical){
-            let top = e.currentTarget.scrollTop
-            if(top != this.state.top){
-                this.setState({top})
-            }
+        let delta = 0
+        if(this.props.vertical && e.deltaMode ==0){
+            delta = e.deltaY/120
+
+            // this.setState({})
         }
         if(this.props.horizontal){
             let left = e.currentTarget.scrollLeft
